@@ -29,17 +29,25 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left" method="post" action="{{route('search')}}">
+                {{ csrf_field() }}
                 <div class="input-group">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">用户<span class="caret"></span></button>
+                        <input name="searchType" id="searchType" value="用户" hidden>
+                        <button type="button" class="btn btn-default" tabindex="-1" id='searchTypeButton'>用户</button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" tabindex="-1" >
+                            <span class="caret"></span>
+                            <span class="sr-only">切换下拉菜单</span>
+                        </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">用户</a></li>
-                            <li><a href="#">笔记本</a></li>
-                            <li><a href="#">笔记</a></li>
+                            <li><a href="#" onclick="document.getElementById('searchType').value='用户'
+                                   document.getElementById('searchTypeButton').innerHTML='用户'">用户</a></li>
+                            <li><a href="#" onclick="document.getElementById('searchType').value='标签'
+                                    document.getElementById('searchTypeButton').innerHTML='标签'">标签</a></li>
                         </ul>
                     </div><!-- /btn-group -->
-                    <input type="text" class="form-control" aria-label="...">
+                    <input type="text" class="form-control" aria-label="..." name="keyword">
                     <span class="input-group-btn">
                         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></button>
                     </span>
@@ -49,7 +57,7 @@
                 <li><a href="#">Link</a></li>
                 @guest
                     <li><a href="#" data-toggle="modal" data-target="#loginModal">登录</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#loginModal">注册</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#signinModal">注册</a></li>
                 @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

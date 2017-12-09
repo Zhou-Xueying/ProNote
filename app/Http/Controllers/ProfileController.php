@@ -48,4 +48,5 @@ class ProfileController extends Controller{
         $profile->save();
         return redirect('profile');
     }
+
 }

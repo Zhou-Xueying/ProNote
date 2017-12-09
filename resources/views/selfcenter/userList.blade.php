@@ -3,7 +3,7 @@
     用户列表
 @stop
 @section('css_js_extra_file')
-    {{--<link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">--}}
+    <link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">
 @stop
 @section('mainpart')
     <div class="col-md-offset-2 col-md-8">
@@ -25,13 +25,13 @@
                     <td><a href="#">{{ $user->name }}</a></td>
                     <td>{{ $user->introduction }}</td>
                     <td>
-                        <a href="#">他的主页</a>
+                        <a href="{{route('')}}">他的主页</a>
                         <a href="#">他的资料</a>
-                        @if('')
+                        {{--@if('')--}}
                             <a href="#">申请好友</a>
-                        @else
+                        {{--@else--}}
                             <a href="#" onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>
-                        @endif
+                        {{--@endif--}}
                     </td>
                 </tr>
             @endforeach

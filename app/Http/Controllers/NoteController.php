@@ -125,4 +125,5 @@ class NoteController extends Controller
         }
         exit('文件上传成功！');
     }
+
 }

@@ -58,3 +58,10 @@ Route::group(['prefix' => 'recycle'], function (){
     Route::get('/note/completely/{id}','NoteController@deleteNoteCompletely')->name('noteDeleteCompletely');
     Route::get('/note/completely','NoteController@deleteAllNotesCompletely')->name('noteDeleteAllCompletely');
 });
+
+//搜索相关
+Route::group(['prefix'=>'search'], function(){
+    Route::any('/', 'SearchController@search')->name('search');
+    Route::any('/user/{keyword}','SearchController@searchUser')->name('searchUser');
+    Route::any('/book/{keyword}','SearchController@searchBook')->name('searchBook');
+});
