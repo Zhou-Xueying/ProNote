@@ -1,0 +1,103 @@
+@extends('selfcenter/selfcenter')
+@section('subtitle')
+    笔记本列表
+@stop
+@section('css_js_extra_file')
+    <link href="{{URL::asset('/css/mypage.css')}}" rel="stylesheet">
+@stop
+@section('mainpart')
+    <div class="col-md-offset-2 col-md-8">
+        <div class="row row-title">
+            <div class="col-md-6"><p class="title-page">
+                    {{--@if(Auth::user()->id==$userid)--}}
+                        我的笔记本
+                    {{--@else--}}
+                        {{--{{$userid}}的笔记本--}}
+                    {{--@endif--}}
+                </p>
+            </div>
+            {{--@if(Auth::user()->id==$userid)--}}
+                <div class="col-md-offset-8"><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#newBookModal">新建</a></div>
+            {{--@endif--}}
+        </div>
+        <hr/>
+        {{--<div class="col-md-4">col-md-3</div>--}}
+        {{--<div class="col-md-4">col-md-3</div>--}}
+        {{--<div class="col-md-4">col-md-3</div>--}}
+        {{--<div class="clearfix visible-xs-block"/>--}}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>标题</th>
+                <th>简介</th>
+                <th>权限</th>
+                <th>创建日期</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($notebooks as $notebook)
+                <tr>
+                    <td>{{ $notebook->bookname }}</td>
+                    <td>{{ $notebook->summary }}</td>
+                    <td>{{ $notebook->authority }}</td>
+                    <td>{{ $notebook->created_at }}</td>
+                    <td>
+                        <a href="{{url('notebook/detail',['id' => $notebook->bookid])}}">详情</a>
+                        {{--@if($notebook->authority=='好友共享')--}}
+                            <a href="{{url('notebook/update', ['id' => $notebook->bookid])}}">修改</a>
+                        {{--@endif--}}
+                        {{--@if(request()->user()->id==$userid)--}}
+                            <a href="{{ url('notebook/delete', ['id' => $notebook->bookid]) }}"
+                                onclick="if (confirm('确定要删除吗？') == false) return false;">删除</a>
+                        {{--@endif--}}
+                     </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+@stop
+@section('modal-fade')
+            <div class="modal fade" id="newBookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">新建笔记本</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal form-newBookModal" method="post" action="{{route('createBook')}}">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label for="inputBookName" class="control-label">笔记本名</label>
+                                    <input id="inputBookName" class="form-control" placeholder="给你的笔记本取个名字吧" required="" autofocus="" type="text" name="bookname">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputBookDescription" class="control-label">描述</label>
+                                    <textarea id="inputBookDescription" class="form-control" placeholder="用几句话描述一下你的笔记本吧" required="" type="text" name="summary"></textarea>
+                                </div>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="authority" id="optionsRadios1" value="公开" checked>公开
+                                    </label>
+                                </div>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="authority" id="optionsRadios2" value="好友可见">好友可见
+                                    </label>
+                                </div>
+                                <div class="radio-inline">
+                                    <label>
+                                        <input type="radio" name="authority" id="optionsRadios3" value="私密">私密
+                                    </label>
+                                </div>
+                                <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">发布</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+@stop

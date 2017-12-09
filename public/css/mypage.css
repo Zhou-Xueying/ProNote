@@ -1,0 +1,40 @@
+.row-title{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.title-page{
+	font-size:30px;
+}
+
+/*
+ * modal
+ */
+ .modal-dialog{
+	 width: 450px;
+ }
+ 
+ .modal-header{
+	 font-size:16px;
+	 text-align:center;
+	 text-shadow: 0 1px 3px rgba(0,0,0,.5);
+	 color: #333;
+ }
+ 
+ .form-newBookModal{
+	max-width: 400px;
+	padding: 15px;
+	margin: 0 auto;
+ }
+ 
+ .form-group{
+	 margin-top:-15px;
+ }
+ 
+ .control-label{
+	 font-size:15px;
+	 padding:5px;
+ }
+ 
+ 
+ 

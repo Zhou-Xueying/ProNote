@@ -1,0 +1,25 @@
+.title-page{
+	font-size:30px;
+}
+
+.form-group{
+	margin-left:5px;
+}
+
+.choice{
+	width:80px;
+	display:inline-block;
+}
+
+.description{
+	width:400px;
+}
+
+.form-horizontal .control-label{
+	padding-top:0;
+}
+
+#addressChoice{
+	width:160px;
+}
+
