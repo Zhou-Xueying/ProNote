@@ -25,12 +25,12 @@
                     <td><a href="#">{{ $user->name }}</a></td>
                     <td>{{ $user->introduction }}</td>
                     <td>
-                        <a href="{{route('')}}">他的主页</a>
-                        <a href="#">他的资料</a>
+                        <a href="{{url('notebook/stranger',['userid'=>$user->userid, 'username'=>$user->name])}}">主页</a>
+                        <a href="{{url('profile',['userid'=>$user->userid])}}">资料</a>
                         {{--@if('')--}}
-                            <a href="#">申请好友</a>
+                            <a href="{{url('friend/apply',['userid'=>$user->userid])}}">申请好友</a>
                         {{--@else--}}
-                            <a href="#" onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>
+                            <a href="{{url('friend/delete',['userid'=>$user->userid])}}" onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>
                         {{--@endif--}}
                     </td>
                 </tr>

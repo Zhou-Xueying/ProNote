@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserInfo extends Model
 {
     protected $table = 'userinfo';
-    protected $primaryKey = 'email';
+    protected $primaryKey = 'userid';
 
     //cannot be updated
-    protected $guarded = ['email'];
+    protected $guarded = ['userid','email'];
 
     public $timestamps = false;
 

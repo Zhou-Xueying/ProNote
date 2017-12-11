@@ -27,6 +27,8 @@ Route::group(['prefix' => 'notebook'], function() {
     Route::get('/detail/{id}','NoteController@index')->name('notes');
     Route::get('/update/{id}','NotebookController@toUpdate')->name('toUpdateBook');
     Route::post('/update','NotebookController@updateBook')->name('updateBook');
+    Route::any('/stranger/{id}/{name}','NotebookController@toStrangerBookList')->name('strangerBook');
+    Route::any('/friend/{id}','NotebookController@toFriendBookList')->name('friendBook');
 });
 
 //笔记
@@ -43,6 +45,7 @@ Route::group(['prefix' => 'profile'], function() {
     Route::get('/', 'ProfileController@index')->name('profile');
     Route::get('/modify', 'ProfileController@modify')->name('profileModify');
     Route::post('/modify', 'ProfileController@update')->name('updateProfile');
+    Route::get('/{id}','ProfileController@showSomeonesProfile')->name('otherProfile');
 });
 
 //回收站相关
@@ -64,4 +67,13 @@ Route::group(['prefix'=>'search'], function(){
     Route::any('/', 'SearchController@search')->name('search');
     Route::any('/user/{keyword}','SearchController@searchUser')->name('searchUser');
     Route::any('/book/{keyword}','SearchController@searchBook')->name('searchBook');
+});
+
+//好友相关
+Route::group(['prefix'=>'friend'], function(){
+    Route::any('/','FriendController@getMyFriends')->name('friendList');
+    Route::any('/apply/{id}','FriendController@applyForFriend')->name('friendApply');
+    Route::any('/applications','FriendController@getMyApplication')->name('applicationList');
+    Route::any('/agree/{id}','FriendController@agreeApplication')->name('friendAgree');
+    Route::any('/delete/{id}','FriendController@deleteFriend')->name('friendDelete');
 });

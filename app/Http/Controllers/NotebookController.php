@@ -113,4 +113,16 @@ class NotebookController extends Controller
         $book->save();
         return redirect('notebook');
     }
+
+    //goto a stranger's page
+    public function toStrangerBookList($userid, $username){
+        $books = NoteBook::where(['userid'=>$userid,'authority'=>'公开'])->get();
+        return view('selfcenter.notebookOfOther',['notebooks'=>$books,'username'=>$username]);
+    }
+
+    //goto a friend's page
+    public function toFriendBookList($userid){
+        $books = NoteBook::where('userid',$userid)->where('authority','<>','私密')->get();
+        return view('selfcenter.notebookOfOther',['notebooks'=>$books,'userid'=>$userid]);
+    }
 }

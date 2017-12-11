@@ -19,6 +19,7 @@ class ProfileController extends Controller{
 
     public function initialize(){
         $profile = new UserInfo();
+        $profile->userid = request()->user()->id;
         $profile->email = request()->user()->email;
         $profile->name = request()->user()->name;
 //        $profile->gender = '男';
@@ -29,7 +30,7 @@ class ProfileController extends Controller{
     }
 
     public function getProfile(){
-        $profile = UserInfo::find(request()->user()->email);
+        $profile = UserInfo::find(request()->user()->id);
         return  $profile;
     }
 
@@ -39,7 +40,7 @@ class ProfileController extends Controller{
     }
 
     public function update(Request $request){
-        $profile = UserInfo::find(request()->user()->email);
+        $profile = UserInfo::find(request()->user()->id);
         $profile->name = $request->input('name');
         $profile->gender = $request->input('gender');
         $profile->birthday = $request->input('birthday');
@@ -49,4 +50,8 @@ class ProfileController extends Controller{
         return redirect('profile');
     }
 
+    public function showSomeonesProfile($userid){
+        $profile = UserInfo::find($userid);
+        return view('selfcenter.profileOfOther',compact('profile'));
+    }
 }
