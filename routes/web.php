@@ -33,6 +33,7 @@ Route::group(['prefix' => 'notebook'], function() {
 
 //笔记
 Route::group(['prefix' => 'note'],function () {
+    Route::get('/all','NoteController@getMyNotes')->name('allNotes');
     Route::post('/','NoteController@createNote')->name('createNote');
     Route::get('/delete/{id}','NoteController@softDeleteNote')->name('deleteNote');
     Route::get('/detail/{id}','NoteController@toDetail')->name('detailNote');

@@ -30,7 +30,7 @@
                 <tr>
                     <td><a href="{{url('notebook/detail',['id' => $notebook->bookid])}}">{{ $notebook->bookname }}</a></td>
                     <td>{{ $notebook->summary }}</td>
-                    <td><a href="#">{{ $notebook->userid }}</a></td>
+                    <td><a href="#">{{ $notebook->username }}</a></td>
                     <td>{{ $notebook->tag }}</td>
                     <td>{{ $notebook->created_at }}</td>
                     <td><a href="{{url('notebook/detail',['id' => $notebook->bookid])}}">查看</a></td>

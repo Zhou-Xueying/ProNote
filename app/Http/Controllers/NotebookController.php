@@ -27,6 +27,7 @@ class NotebookController extends Controller
     {
         $notebook = new NoteBook();
         $notebook->userid = request()->user()->id;
+        $notebook->username = request()->user()->name;
         $notebook->bookname = $request->input('bookname');
         $notebook->summary = $request->input('summary');
         $notebook->tag = $request->input('tag');

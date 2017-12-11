@@ -15,7 +15,7 @@
                 <li class="sidebar-brand"><a href="#">Bootstrap 3</a></li>
                 <li><a href="{{route('welcome')}}"><i class="fa fa-fw fa-home"></i> 首页</a></li>
                 <li><a href="{{route('notebook')}}"><i class="fa fa-fw fa-folder"></i> 我的笔记本</a></li>
-                <li><a href="#"><i class="fa fa-fw fa-file-o"></i> 我的笔记</a></li>
+                <li><a href="{{route('allNotes')}}"><i class="fa fa-fw fa-file-o"></i> 我的笔记</a></li>
                 <li><a href="#"><i class="fa fa-fw fa-cog"></i> 设置</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 好友圈 <span class="caret"></span></a>

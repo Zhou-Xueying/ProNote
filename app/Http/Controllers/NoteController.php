@@ -19,9 +19,15 @@ class NoteController extends Controller
         return $notes;
     }
 
+    public function getMyNotes(){
+        $notes = Note::where('userid',request()->user()->id)->get();
+        return view('selfcenter.noteList',['notes'=>$notes]);
+    }
+
     public function createNote(Request $request){
         $note = new Note();
         $note->bookid=$request->input('bookid');
+        $note->bookname=NoteBook::find($request->input('bookid'))->get()->bookname;
         $note->userid=request()->user()->id;
         $note->content=$request->input('content');
         $note->save();
