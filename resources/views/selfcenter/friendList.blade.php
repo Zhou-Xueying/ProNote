@@ -3,7 +3,7 @@
     好友列表
 @stop
 @section('css_js_extra_file')
-    {{--<link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">--}}
+    <link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">
 @stop
 @section('mainpart')
     <div class="col-md-offset-2 col-md-8">
@@ -11,7 +11,7 @@
             <div class="col-md-6"><p class="title-page">我的好友</div>
         </div>
         <hr/>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th>用户名</th>

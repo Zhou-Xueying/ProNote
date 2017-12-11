@@ -24,7 +24,7 @@ class SearchController extends Controller{
     }
 
     public function searchBook($keyword){
-        $books = NoteBook::where('tag',$keyword)->get();
-        return view('selfcenter.bookList',['books'=>$books]);
+        $books = NoteBook::where('tag','like','%'.$keyword.'%')->get();
+        return view('selfcenter.bookList',['notebooks'=>$books]);
     }
 }

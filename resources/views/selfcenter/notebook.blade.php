@@ -9,27 +9,18 @@
     <div class="col-md-offset-2 col-md-8">
         <div class="row row-title">
             <div class="col-md-6"><p class="title-page">
-                    {{--@if(Auth::user()->id==$userid)--}}
                         我的笔记本
-                    {{--@else--}}
-                        {{--{{$userid}}的笔记本--}}
-                    {{--@endif--}}
                 </p>
             </div>
-            {{--@if(Auth::user()->id==$userid)--}}
                 <div class="col-md-offset-8"><a href="#" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#newBookModal">新建</a></div>
-            {{--@endif--}}
         </div>
         <hr/>
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="clearfix visible-xs-block"/>--}}
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             <thead>
             <tr>
                 <th>标题</th>
                 <th>简介</th>
+                <th>标签</th>
                 <th>权限</th>
                 <th>创建日期</th>
                 <th>操作</th>
@@ -40,17 +31,14 @@
                 <tr>
                     <td>{{ $notebook->bookname }}</td>
                     <td>{{ $notebook->summary }}</td>
+                    <td>{{ $notebook->tag }}</td>
                     <td>{{ $notebook->authority }}</td>
                     <td>{{ $notebook->created_at }}</td>
                     <td>
                         <a href="{{url('notebook/detail',['id' => $notebook->bookid])}}">详情</a>
-                        {{--@if($notebook->authority=='好友共享')--}}
                             <a href="{{url('notebook/update', ['id' => $notebook->bookid])}}">修改</a>
-                        {{--@endif--}}
-                        {{--@if(request()->user()->id==$userid)--}}
                             <a href="{{ url('notebook/delete', ['id' => $notebook->bookid]) }}"
                                 onclick="if (confirm('确定要删除吗？') == false) return false;">删除</a>
-                        {{--@endif--}}
                      </td>
                 </tr>
             @endforeach
@@ -78,6 +66,10 @@
                                 <div class="form-group">
                                     <label for="inputBookDescription" class="control-label">描述</label>
                                     <textarea id="inputBookDescription" class="form-control" placeholder="用几句话描述一下你的笔记本吧" required="" type="text" name="summary"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputBookTag" class="control-label">标签</label>
+                                    <input id="inputBookTag" class="form-control" placeholder="设置一个便于搜索的标签吧" required="" autofocus="" type="text" name="tag">
                                 </div>
                                 <div class="radio-inline">
                                     <label>

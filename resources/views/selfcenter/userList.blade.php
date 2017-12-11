@@ -11,7 +11,7 @@
             <div class="col-md-6"><p class="title-page">搜索结果</div>
         </div>
         <hr/>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             <thead>
             <tr>
                 <th>用户名</th>

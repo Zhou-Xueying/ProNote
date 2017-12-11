@@ -23,6 +23,10 @@
             <label for="inputBookDescription" class="control-label" style="font-size: 20px;">描述</label>
             <textarea id="inputBookDescription" class="form-control" required="" type="text" name="summary" style="min-height: 160px;">{{$notebook->summary}}</textarea>
         </div>
+        <div class="form-group">
+            <label for="inputBookTag" class="control-label">标签</label>
+            <input id="inputBookTag" class="form-control" required="" autofocus="" type="text" name="tag" value="{{$notebook->tag}}">
+        </div>
         <div class="radio-inline">
             <label>
                 <input type="radio" name="authority" id="optionsRadios1" value="公开" <?=$notebook->authority=='公开'?'checked':'';?>>公开

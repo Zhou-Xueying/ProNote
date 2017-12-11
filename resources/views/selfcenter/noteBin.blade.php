@@ -17,7 +17,7 @@
             </div>
         </div>
         <hr/>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             <thead>
             <tr>
                 <th>内容</th>
@@ -29,7 +29,8 @@
             <tbody>
             @foreach($notes as $note)
                 <tr>
-                    <td>{{ $note->content }}</td>
+                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; width: 60%">
+                        {{ $note->content }}</td>
                     <td>{{ $note->bookid }}</td>
                     <td>{{ $note->deleted_at }}</td>
                     <td>

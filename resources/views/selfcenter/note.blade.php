@@ -19,20 +19,16 @@
                 &nbsp;&nbsp;
                 <a href="{{route('notebook') }}" class="btn btn-lg">返回</a>
             </div>
-
         </div>
         <br/>
-        <div><p style="font-size: 20px;">{{ $notebook->summary }}</p></div>
+        <div><p style="font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;{{ $notebook->summary }}</p></div>
         <div class="col-md-offset-6"><p style=";font-size: 15px; ">建立时间：{{ $notebook->created_at }}</p></div>
         <hr/>
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="col-md-4">col-md-3</div>--}}
-        {{--<div class="clearfix visible-xs-block"/>--}}
-        <table class="table table-hover">
+        <table class="table table-hover table-striped" style="table-layout:fixed">
             @foreach($notes as $note)
                 <tr>
-                    <td>{{ $note->content }}</td>
+                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; width: 60%">
+                        {{ $note->content }}</td>
                     <td>{{ $note->updated_at }}</td>
                     <td>
                         <a href="{{ url('note/detail', ['id' => $note->noteid]) }}">查看</a>

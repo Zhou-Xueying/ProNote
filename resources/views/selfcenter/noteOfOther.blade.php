@@ -15,7 +15,7 @@
         <div><p style="font-size: 20px;">{{ $notebook->summary }}</p></div>
         <div class="col-md-offset-6"><p style=";font-size: 15px; ">建立时间：{{ $notebook->created_at }}</p></div>
         <hr/>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
             @foreach($notes as $note)
                 <tr>
                     <td>{{ $note->content }}</td>
