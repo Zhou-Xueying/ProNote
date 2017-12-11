@@ -72,8 +72,9 @@ Route::group(['prefix'=>'search'], function(){
 //好友相关
 Route::group(['prefix'=>'friend'], function(){
     Route::any('/','FriendController@getMyFriends')->name('friendList');
-    Route::any('/apply/{id}','FriendController@applyForFriend')->name('friendApply');
-    Route::any('/applications','FriendController@getMyApplication')->name('applicationList');
-    Route::any('/agree/{id}','FriendController@agreeApplication')->name('friendAgree');
+    Route::any('/apply/{id}','FriendController@apply')->name('friendApply');
+    Route::any('/applications','FriendController@getMyApplications')->name('applicationList');
+    Route::any('/agree/{id}','FriendController@agree')->name('friendAgree');
+    Route::any('/refuse/{id}','FriendController@disagree')->name('friendRefuse');
     Route::any('/delete/{id}','FriendController@deleteFriend')->name('friendDelete');
 });

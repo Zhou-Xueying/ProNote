@@ -18,9 +18,8 @@ class FriendController extends Controller{
             $application->requesterid = request()->user()->id;
             $application->requestedid = $requestedid;
             $application->save();
-            return true;
         }
-        return false;
+        return redirect('notebook');
     }
 
     public function getMyApplications(){
@@ -36,7 +35,7 @@ class FriendController extends Controller{
             $requesters = $requesters->orwhere('userid',$requesterid[$i]);
         }
         $requesters = $requesters->get();
-        return view();
+        return view('selfcenter.applicationList',['users'=>$requesters]);
     }
 
     public function agree($requestid){
@@ -50,10 +49,12 @@ class FriendController extends Controller{
             $friendship->save();
         }
         $aplication->delete();
+        return redirect()->route('applicationList');
     }
 
     public function disagree($requestid){
         FriendRequest::destroy($requestid);
+        return redirect()->route('applicationList');
     }
 
     public function getMyFriends(){
@@ -73,7 +74,7 @@ class FriendController extends Controller{
             $friends = $friends->orwhere('userid',$friendid[$i]);
         }
         $friends = $friends->get();
-        return view();
+        return view('selfcenter.friendList',['users'=>$friends]);
     }
 
     public function deleteFriend($friendid){
@@ -81,14 +82,12 @@ class FriendController extends Controller{
         $friendship1 = Friendship::where('user1id',$userid)->where('user2id', $friendid)->get();
         if(isset($friendship1)){
             $friendship1->delete();
-            return redirect();
         }
         $friendship2 = Friendship::where('user2id',$userid)->where('user1id', $friendid)->get();
         if(isset($friendship2)){
             $friendship2->delete();
-            return redirect();
         }
-        return false;
+        return redirect()->route('friendList');
     }
 
     public function isFriend($userid1,$userid2){

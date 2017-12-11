@@ -1,14 +1,14 @@
 @extends('selfcenter/selfcenter')
 @section('subtitle')
-    用户列表
+    好友列表
 @stop
 @section('css_js_extra_file')
-    <link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">
+    {{--<link href="{{URL::asset('/css/notebook.css')}}" rel="stylesheet">--}}
 @stop
 @section('mainpart')
     <div class="col-md-offset-2 col-md-8">
         <div class="row row-title">
-            <div class="col-md-6"><p class="title-page">搜索结果</div>
+            <div class="col-md-6"><p class="title-page">好友申请</div>
         </div>
         <hr/>
         <table class="table table-hover">
@@ -22,17 +22,15 @@
             <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="#">{{ $user->name }}</a></td>
                     <td>{{ $user->introduction }}</td>
                     <td>
                         <a href="{{url('notebook/stranger',['userid'=>$user->userid, 'username'=>$user->name])}}">主页</a>
                         <a href="{{url('profile',['userid'=>$user->userid])}}">资料</a>
-                        {{--@if('')--}}
-                            <a href="{{url('friend/apply',['userid'=>$user->userid])}}" onclick="javaScript:alert('您的申请已发送！')">申请好友</a>
-                        {{--@else--}}
-                            {{--<a href="{{url('friend/delete',['userid'=>$user->userid])}}"--}}
-                               {{--onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>--}}
-                        {{--@endif--}}
+                        <a href="{{url('friend/agree',['userid'=>$user->userid])}}"
+                           onclick="if (confirm('要添加为好友吗？') == false) return false;">同意</a>
+                        <a href="{{url('friend/refuse',['userid'=>$user->userid])}}"
+                           onclick="if (confirm('要拒绝该请求吗？') == false) return false;">同意</a>
                     </td>
                 </tr>
             @endforeach

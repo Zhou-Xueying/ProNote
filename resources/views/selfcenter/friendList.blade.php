@@ -22,12 +22,13 @@
             <tbody>
                 @foreach($users as $user)
                 <tr>
-                    <td><a href="#">{{ $user->name }}</a></td>
+                    <td>{{ $user->name }}</td>
                     <td>{{ $user->introduction }}</td>
                     <td>
-                        <a href="#">他的主页</a>
-                        <a href="#">他的资料</a>
-                        <a href="#" onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>
+                        <a href="{{url('notebook/friend',['userid'=>$user->userid, 'username'=>$user->name])}}">他的主页</a>
+                        <a href="{{url('profile',['userid'=>$user->userid])}}">他的资料</a>
+                        <a href="{{url('friend/delete',['userid'=>$user->userid])}}"
+                           onclick="if (confirm('确定要解除和他的好友关系吗？') == false) return false;">解除好友</a>
                     </td>
                 </tr>
                 @endforeach
