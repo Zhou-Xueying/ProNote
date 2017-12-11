@@ -15,16 +15,12 @@
         <div><p style="font-size: 20px;">{{ $notebook->summary }}</p></div>
         <div class="col-md-offset-6"><p style=";font-size: 15px; ">建立时间：{{ $notebook->created_at }}</p></div>
         <hr/>
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" style="table-layout:fixed">
             @foreach($notes as $note)
                 <tr>
-                    <td>{{ $note->content }}</td>
-                    <td>{{ $note->updated_at }}</td>
-                    <td>
-                        <a href="{{ url('note/detail', ['id' => $note->noteid]) }}">查看</a>
-                        <a href="{{ url('note/delete', ['id' => $note->noteid]) }}"
-                           onclick="if (confirm('确定要删除吗？') == false) return false;">删除</a>
-                    </td>
+                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; width: 70%">{{ $note->content }}</td>
+                    <td style="width:20%;">{{ $note->updated_at }}</td>
+                    <td><a href="{{ url('note/other', ['id' => $note->noteid]) }}">查看</a></td>
                 </tr>
             @endforeach
         </table>

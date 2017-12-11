@@ -111,6 +111,18 @@ class NoteController extends Controller
         return redirect('note/detail/'.$note->noteid);
     }
 
+    public function getOtherNotes($bookid){
+        $notes = Note::where('bookid',$bookid)->get();
+        $notebook = NoteBook::find($bookid);
+        return view('selfcenter.noteOfOther',['notes'=>$notes,'notebook'=>$notebook]);
+    }
+
+    public function otherNoteDetail($noteid){
+        $note = Note::find($noteid);
+        $book = NoteBook::find($note->bookid);
+        return view('selfcenter.noteDetailOfOther',['notebook'=>$book, 'note'=>$note]);
+    }
+
     //upload File
     public function postFileupload(Request $request){
         //判断请求中是否包含name=file的上传文件

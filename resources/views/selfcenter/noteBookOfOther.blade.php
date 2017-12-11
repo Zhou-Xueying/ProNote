@@ -25,7 +25,7 @@
             <tbody>
             @foreach($notebooks as $notebook)
                 <tr>
-                    <td><a href="{{url('notebook/detail',['id' => $notebook->bookid])}}">{{ $notebook->bookname }}</a></td>
+                    <td><a href="{{url('note',['id' => $notebook->bookid])}}">{{ $notebook->bookname }}</a></td>
                     <td>{{ $notebook->summary }}</td>
                     <td>{{ $notebook->created_at }}</td>
                 </tr>

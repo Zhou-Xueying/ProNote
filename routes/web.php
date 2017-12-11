@@ -39,6 +39,8 @@ Route::group(['prefix' => 'note'],function () {
     Route::get('/detail/{id}','NoteController@toDetail')->name('detailNote');
     Route::get('/update/{id}','NoteController@toUpdate')->name('toUpdateNote');
     Route::post('/update','NoteController@updateNote')->name('updateNote');
+    Route::any('/{id}','NoteController@getOtherNotes')->name('otherNotes');
+    Route::any('/other/{id}','NoteController@otherNoteDetail')->name('otherNoteDetail');
 });
 
 //用户信息
