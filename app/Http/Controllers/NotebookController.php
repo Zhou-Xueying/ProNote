@@ -123,8 +123,8 @@ class NotebookController extends Controller
     }
 
     //goto a friend's page
-    public function toFriendBookList($userid){
+    public function toFriendBookList($userid, $username){
         $books = NoteBook::where('userid',$userid)->where('authority','<>','私密')->get();
-        return view('selfcenter.notebookOfOther',['notebooks'=>$books,'userid'=>$userid]);
+        return view('selfcenter.notebookOfOther',['notebooks'=>$books,'username'=>$username]);
     }
 }

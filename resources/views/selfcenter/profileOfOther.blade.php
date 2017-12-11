@@ -9,7 +9,7 @@
     <div class="col-md-offset-3 col-md-7">
         <div class="row row-title">
             <div class="col-md-3"><p class="title-page">{{$profile->name}}</p></div>
-            <div class="col-md-offset-8"><a href="#" class="btn btn-sm btn-primary">申请好友</a></div>
+            {{--<div class="col-md-offset-8"><a href="#" class="btn btn-sm btn-primary">申请好友</a></div>--}}
         </div>
         <hr/>
         <form class="form-horizontal">

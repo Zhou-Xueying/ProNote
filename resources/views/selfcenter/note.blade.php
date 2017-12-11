@@ -10,8 +10,10 @@
         <div class="row row-title">
             <div class="col-md-6"><p class="title-page">
                     {{$notebook->bookname}}
-                    <a href="{{ url('notebook/delete', ['id' => $notebook->bookid]) }}"
-                       onclick="if (confirm('确定要删除吗？') == false) return false;" style="font-size: 15px;">删除</a>
+                    @if(Auth::user()->id==$notebook->userid)
+                        <a href="{{ url('notebook/delete', ['id' => $notebook->bookid]) }}"
+                            onclick="if (confirm('确定要删除吗？') == false) return false;" style="font-size: 15px;">删除</a>
+                    @endif
                 </p>
             </div>
             <div class="col-md-offset-8">

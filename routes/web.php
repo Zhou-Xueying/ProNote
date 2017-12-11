@@ -28,7 +28,8 @@ Route::group(['prefix' => 'notebook'], function() {
     Route::get('/update/{id}','NotebookController@toUpdate')->name('toUpdateBook');
     Route::post('/update','NotebookController@updateBook')->name('updateBook');
     Route::any('/stranger/{id}/{name}','NotebookController@toStrangerBookList')->name('strangerBook');
-    Route::any('/friend/{id}','NotebookController@toFriendBookList')->name('friendBook');
+    Route::any('/friend/{id}/{name}','NotebookController@toFriendBookList')->name('friendBook');
+    Route::any('/shared','FriendController@getSharedBooks')->name('sharedBooks');
 });
 
 //笔记

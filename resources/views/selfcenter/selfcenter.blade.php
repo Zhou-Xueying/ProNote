@@ -21,7 +21,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 好友圈 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{route('friendList')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好友列表</a></li>
-                        <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收到分享</a></li>
+                        <li><a href="{{route('sharedBooks')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收到分享</a></li>
                         <li><a href="{{route('applicationList')}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;消息通知</a></li>
                     </ul>
                 </li>
