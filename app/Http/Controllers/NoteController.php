@@ -27,10 +27,11 @@ class NoteController extends Controller
     public function createNote(Request $request){
         $note = new Note();
         $note->bookid=$request->input('bookid');
-        $note->bookname=NoteBook::find($request->input('bookid'))->get()->bookname;
+        $note->bookname=NoteBook::find($request->input('bookid'))->bookname;
         $note->userid=request()->user()->id;
         $note->content=$request->input('content');
         $note->save();
+//        $this->postFileupload($request);
         return redirect('notebook/detail/'.$request->input('bookid'));
     }
 
