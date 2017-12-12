@@ -29,11 +29,11 @@
             <tbody>
             @foreach($notes as $note)
                 <tr>
-                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; width: 60%">
+                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; width: 40%">
                         {{ $note->content }}</td>
-                    <td>{{ $note->bookid }}</td>
-                    <td>{{ $note->deleted_at }}</td>
-                    <td>
+                    <td style="width:20%;">{{ $note->bookname }}</td>
+                    <td style="width:20%;">{{ $note->deleted_at }}</td>
+                    <td style="width:20%;">
                         <a href="{{url('recycle/note/restore', ['id' => $note->noteid])}}"
                            onclick="if (confirm('确定恢复该笔记吗？') == false) return false;">恢复</a>
                         <a href="{{url('recycle/note/completely', ['id' => $note->noteid])}}"

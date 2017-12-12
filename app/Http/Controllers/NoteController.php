@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\NoteBook;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class NoteController extends Controller
 {
@@ -30,8 +32,11 @@ class NoteController extends Controller
         $note->bookname=NoteBook::find($request->input('bookid'))->bookname;
         $note->userid=request()->user()->id;
         $note->content=$request->input('content');
+        $file = $request->file('file');
+        if($file!=null){
+            $note->filepath = $this->postFileupload($request);
+        }
         $note->save();
-//        $this->postFileupload($request);
         return redirect('notebook/detail/'.$request->input('bookid'));
     }
 
@@ -126,23 +131,15 @@ class NoteController extends Controller
 
     //upload File
     public function postFileupload(Request $request){
-        //判断请求中是否包含name=file的上传文件
-        if(!$request->hasFile('file')){
-            exit('上传文件为空！');
-        }
-        $file = $request->file('file');
-        //判断文件上传过程中是否出错
-        if(!$file->isValid()){
-            exit('文件上传出错！');
-        }
-        $destPath = realpath(public_path('images'));
-        if(!file_exists($destPath))
-            mkdir($destPath,0755,true);
-        $filename = $file->getClientOriginalName();
-        if(!$file->move($destPath,$filename)){
-            exit('保存文件失败！');
-        }
-        exit('文件上传成功！');
+        $path = $request->file('file')->store('file');
+        return $path;
+    }
+
+    //dowmload file
+    public function getFiledownload($noteid){
+        $filePath = Note::find($noteid)->filepath;
+        $filePath = str_replace('/','\\',$filePath);
+        return response()->download(storage_path().'\\'.'app'.'\\'.$filePath);
     }
 
 }

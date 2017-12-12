@@ -22,6 +22,9 @@
         <div class="col-md-10">
             {{$note->content}}
             <div style="margin: 50px;"/>
+            @if(isset($note->filepath))
+                <p style="text-align: right"><a href="{{route('fileDownLoad',['id'=>$note->noteid])}}">下载附件</a></p>
+            @endif
             <p style="text-align: right">发表于：{{ $note->created_at }}</p>
             <p style="text-align: right">最后一次更新于: {{ $note->updated_at }}</p>
         </div>

@@ -42,6 +42,7 @@ Route::group(['prefix' => 'note'],function () {
     Route::post('/update','NoteController@updateNote')->name('updateNote');
     Route::any('/{id}','NoteController@getOtherNotes')->name('otherNotes');
     Route::any('/other/{id}','NoteController@otherNoteDetail')->name('otherNoteDetail');
+    Route::get('/file/{id}','NoteController@getFiledownload')->name('fileDownLoad');
 });
 
 //用户信息

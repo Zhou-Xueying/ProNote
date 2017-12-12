@@ -53,7 +53,7 @@
                     <h4 class="modal-title" id="myModalLabel">新建笔记</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal form-newBookModal" method="post" action="{{route('createNote')}}">
+                    <form class="form-horizontal form-newBookModal" method="post" action="{{route('createNote')}}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="text" class="hidden" name="bookid" value="{{$notebook->bookid}}"/>
                         <div class="form-group">
@@ -62,8 +62,8 @@
                                       required="" type="text" name="content"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="inputFile">上传图片</label>
-                            <input type="file" id="inputFile">
+                            <label for="inputFile">上传附件</label>
+                            <input type="file" id="inputFile" name="file">
                         </div>
                         <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">发布</button>
                     </form>
